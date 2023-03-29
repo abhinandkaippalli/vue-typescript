@@ -7,26 +7,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   name: 'App',
   components: {},
-  data : function() {
+  setup() {
+    const name = ref('Abhi')
+    const age = ref<number | string>(25)
+
+   const changeName = (newName: string) => {
+      name.value = newName
+      return name.value
+    }
+
+    const changeAge = (newAge: number | string) => {
+      age.value = newAge
+      return age.value
+    }
     return {
-      name : 'Abhi',
-      age: 25 as number | string
-    }
-  },
-  methods: {
-    changeName(name:string) {
-      this.name = name
-      return name
-    },
-    changeAge(age: number | string) {
-      this.age = age
-      return age
-    }
+    name,
+    age,
+    changeName,
+    changeAge
+  }
   }
 });
 </script>
